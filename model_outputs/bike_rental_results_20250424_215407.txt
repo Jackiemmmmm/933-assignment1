@@ -1,0 +1,407 @@
+Bike Rental Model Comparison - Run at 2025-04-24 21:54:07
+--------------------------------------------------------------------------------
+Linear Regression: RMSE=15.15, R^2=0.95
+
+Best Ridge Regression alpha (λ): 0.31
+
+Ridge Regression: RMSE=15.15, R^2=0.95
+Lasso Regression: RMSE=15.11, R^2=0.95
+Elastic Net: RMSE=15.13, R^2=0.95
+
+best alpha: 0.03, best l1_ratio: 1.0
+
+                 Linear      Ridge         Lasso    ElasticNet
+temp          52.257972  52.161414  5.164590e+01  5.171376e+01
+humidity     -11.062912 -11.061955 -1.096194e+01 -1.103187e+01
+windspeed     -8.503579  -8.503162 -8.399527e+00 -8.472653e+00
+hour          -0.721079  -0.726547 -6.740301e-01 -7.132092e-01
+sin_hour      34.634309  34.627828  3.457697e+01  3.461397e+01
+cos_hour       0.061133   0.060521  0.000000e+00  3.215307e-02
+temp_squared  -0.526382  -0.431735  0.000000e+00  0.000000e+00
+workingday_0 -20.109517 -20.106189 -3.976540e+01 -4.008449e+01
+workingday_1  20.109517  20.106189  9.592164e-14  7.660125e-14
+holiday_0     10.794015  10.788591  2.043628e+01  2.123772e+01
+holiday_1    -10.794015 -10.788591 -1.451032e-13 -1.303378e-13
+
+Epoch 0: Loss = 186.4246
+Epoch 10: Loss = 186.0477
+Epoch 20: Loss = 185.6713
+Epoch 30: Loss = 185.2955
+Epoch 40: Loss = 184.9203
+Epoch 50: Loss = 184.5458
+Epoch 60: Loss = 184.1720
+Epoch 70: Loss = 183.7989
+Epoch 80: Loss = 183.4265
+Epoch 90: Loss = 183.0548
+Deep Learning Model: RMSE=180.41, R^2=-6.38, wd=0.01, lr=0.01, epochs=100
+Epoch 0: Loss = 185.3477
+Epoch 100: Loss = 181.6064
+Epoch 200: Loss = 177.9341
+Epoch 300: Loss = 174.3297
+Epoch 400: Loss = 170.7910
+Epoch 500: Loss = 167.3161
+Epoch 600: Loss = 163.9028
+Epoch 700: Loss = 160.5491
+Epoch 800: Loss = 157.2530
+Epoch 900: Loss = 154.0124
+Deep Learning Model: RMSE=149.11, R^2=-4.04, wd=0.01, lr=0.01, epochs=1000
+Epoch 0: Loss = 185.9319
+Epoch 1000: Loss = 151.3868
+Epoch 2000: Loss = 122.0593
+Epoch 3000: Loss = 96.4731
+Epoch 4000: Loss = 73.8485
+Epoch 5000: Loss = 54.1461
+Epoch 6000: Loss = 38.1894
+Epoch 7000: Loss = 27.2878
+Epoch 8000: Loss = 21.4226
+Epoch 9000: Loss = 18.3396
+Deep Learning Model: RMSE=16.16, R^2=0.94, wd=0.01, lr=0.01, epochs=10000
+Epoch 0: Loss = 186.2384
+Epoch 10: Loss = 182.4836
+Epoch 20: Loss = 178.7692
+Epoch 30: Loss = 175.1091
+Epoch 40: Loss = 171.5120
+Epoch 50: Loss = 167.9824
+Epoch 60: Loss = 164.5218
+Epoch 70: Loss = 161.1297
+Epoch 80: Loss = 157.8049
+Epoch 90: Loss = 154.5459
+Deep Learning Model: RMSE=149.64, R^2=-4.07, wd=0.01, lr=0.1, epochs=100
+Epoch 0: Loss = 186.0108
+Epoch 100: Loss = 151.1200
+Epoch 200: Loss = 122.3423
+Epoch 300: Loss = 98.3798
+Epoch 400: Loss = 78.3738
+Epoch 500: Loss = 61.8995
+Epoch 600: Loss = 48.7302
+Epoch 700: Loss = 38.6521
+Epoch 800: Loss = 31.3452
+Epoch 900: Loss = 26.3400
+Deep Learning Model: RMSE=22.18, R^2=0.89, wd=0.01, lr=0.1, epochs=1000
+Epoch 0: Loss = 186.4975
+Epoch 1000: Loss = 23.0457
+Epoch 2000: Loss = 16.1277
+Epoch 3000: Loss = 15.6720
+Epoch 4000: Loss = 15.5158
+Epoch 5000: Loss = 15.4611
+Early stopping at epoch 5288: Loss = 15.4553
+Deep Learning Model: RMSE=15.23, R^2=0.95, wd=0.01, lr=0.1, epochs=10000
+Epoch 0: Loss = 186.4566
+Epoch 10: Loss = 150.4321
+Epoch 20: Loss = 119.0710
+Epoch 30: Loss = 92.5352
+Epoch 40: Loss = 70.3470
+Epoch 50: Loss = 52.4417
+Epoch 60: Loss = 39.0686
+Epoch 70: Loss = 30.1932
+Epoch 80: Loss = 25.0515
+Epoch 90: Loss = 22.2699
+Deep Learning Model: RMSE=19.85, R^2=0.91, wd=0.01, lr=1.0, epochs=100
+Epoch 0: Loss = 186.3157
+Epoch 100: Loss = 20.7255
+Epoch 200: Loss = 16.2348
+Epoch 300: Loss = 15.8111
+Epoch 400: Loss = 15.6600
+Epoch 500: Loss = 15.5682
+Epoch 600: Loss = 15.5140
+Epoch 700: Loss = 15.4834
+Epoch 800: Loss = 15.4667
+Epoch 900: Loss = 15.4578
+Deep Learning Model: RMSE=15.23, R^2=0.95, wd=0.01, lr=1.0, epochs=1000
+Epoch 0: Loss = 186.2254
+Epoch 1000: Loss = 15.4530
+Early stopping at epoch 1134: Loss = 15.4501
+Deep Learning Model: RMSE=15.22, R^2=0.95, wd=0.01, lr=1.0, epochs=10000
+Epoch 0: Loss = 186.1950
+Epoch 10: Loss = 185.8184
+Epoch 20: Loss = 185.4424
+Epoch 30: Loss = 185.0668
+Epoch 40: Loss = 184.6920
+Epoch 50: Loss = 184.3178
+Epoch 60: Loss = 183.9443
+Epoch 70: Loss = 183.5716
+Epoch 80: Loss = 183.1995
+Epoch 90: Loss = 182.8282
+Deep Learning Model: RMSE=180.18, R^2=-6.36, wd=0.1, lr=0.01, epochs=100
+Epoch 0: Loss = 185.8058
+Epoch 100: Loss = 182.0636
+Epoch 200: Loss = 178.3917
+Epoch 300: Loss = 174.7886
+Epoch 400: Loss = 171.2521
+Epoch 500: Loss = 167.7801
+Epoch 600: Loss = 164.3704
+Epoch 700: Loss = 161.0209
+Epoch 800: Loss = 157.7293
+Epoch 900: Loss = 154.4937
+Deep Learning Model: RMSE=149.57, R^2=-4.07, wd=0.1, lr=0.01, epochs=1000
+Epoch 0: Loss = 186.2754
+Epoch 1000: Loss = 151.7795
+Epoch 2000: Loss = 122.5614
+Epoch 3000: Loss = 97.1400
+Epoch 4000: Loss = 74.7360
+Epoch 5000: Loss = 55.3189
+Epoch 6000: Loss = 39.6677
+Epoch 7000: Loss = 28.8942
+Epoch 8000: Loss = 22.9567
+Epoch 9000: Loss = 19.9479
+Deep Learning Model: RMSE=18.18, R^2=0.93, wd=0.1, lr=0.01, epochs=10000
+Epoch 0: Loss = 186.1693
+Epoch 10: Loss = 182.4161
+Epoch 20: Loss = 178.7043
+Epoch 30: Loss = 175.0475
+Epoch 40: Loss = 171.4550
+Epoch 50: Loss = 167.9312
+Epoch 60: Loss = 164.4774
+Epoch 70: Loss = 161.0934
+Epoch 80: Loss = 157.7777
+Epoch 90: Loss = 154.5287
+Deep Learning Model: RMSE=149.63, R^2=-4.07, wd=0.1, lr=0.1, epochs=100
+Epoch 0: Loss = 185.9704
+Epoch 100: Loss = 151.0881
+Epoch 200: Loss = 122.3857
+Epoch 300: Loss = 98.5750
+Epoch 400: Loss = 78.7992
+Epoch 500: Loss = 62.6178
+Epoch 600: Loss = 49.7671
+Epoch 700: Loss = 39.9798
+Epoch 800: Loss = 32.8824
+Epoch 900: Loss = 27.9808
+Deep Learning Model: RMSE=24.04, R^2=0.87, wd=0.1, lr=0.1, epochs=1000
+Epoch 0: Loss = 186.6565
+Epoch 1000: Loss = 24.8692
+Epoch 2000: Loss = 17.8891
+Epoch 3000: Loss = 17.4286
+Epoch 4000: Loss = 17.3404
+Epoch 5000: Loss = 17.2791
+Epoch 6000: Loss = 17.2328
+Early stopping at epoch 6800: Loss = 17.2138
+Deep Learning Model: RMSE=17.13, R^2=0.93, wd=0.1, lr=0.1, epochs=10000
+Epoch 0: Loss = 186.2195
+Epoch 10: Loss = 150.2133
+Epoch 20: Loss = 118.8861
+Epoch 30: Loss = 92.4455
+Epoch 40: Loss = 70.4463
+Epoch 50: Loss = 52.8684
+Epoch 60: Loss = 39.8904
+Epoch 70: Loss = 31.3112
+Epoch 80: Loss = 26.2312
+Epoch 90: Loss = 23.3584
+Deep Learning Model: RMSE=21.08, R^2=0.90, wd=0.1, lr=1.0, epochs=100
+Epoch 0: Loss = 185.9919
+Epoch 100: Loss = 21.7115
+Epoch 200: Loss = 17.9618
+Epoch 300: Loss = 17.5040
+Epoch 400: Loss = 17.4143
+Epoch 500: Loss = 17.3690
+Epoch 600: Loss = 17.3363
+Epoch 700: Loss = 17.3095
+Epoch 800: Loss = 17.2866
+Epoch 900: Loss = 17.2673
+Deep Learning Model: RMSE=17.17, R^2=0.93, wd=0.1, lr=1.0, epochs=1000
+Epoch 0: Loss = 186.0328
+Epoch 1000: Loss = 17.2507
+Early stopping at epoch 1669: Loss = 17.2095
+Deep Learning Model: RMSE=17.12, R^2=0.93, wd=0.1, lr=1.0, epochs=10000
+Epoch 0: Loss = 185.9432
+Epoch 10: Loss = 185.5662
+Epoch 20: Loss = 185.1897
+Epoch 30: Loss = 184.8139
+Epoch 40: Loss = 184.4388
+Epoch 50: Loss = 184.0646
+Epoch 60: Loss = 183.6912
+Epoch 70: Loss = 183.3186
+Epoch 80: Loss = 182.9469
+Epoch 90: Loss = 182.5761
+Deep Learning Model: RMSE=179.93, R^2=-6.34, wd=1.0, lr=0.01, epochs=100
+Epoch 0: Loss = 186.1127
+Epoch 100: Loss = 182.3745
+Epoch 200: Loss = 178.7198
+Epoch 300: Loss = 175.1459
+Epoch 400: Loss = 171.6501
+Epoch 500: Loss = 168.2295
+Epoch 600: Loss = 164.8810
+Epoch 700: Loss = 161.6020
+Epoch 800: Loss = 158.3897
+Epoch 900: Loss = 155.2414
+Deep Learning Model: RMSE=150.43, R^2=-4.13, wd=1.0, lr=0.01, epochs=1000
+Epoch 0: Loss = 186.1051
+Epoch 1000: Loss = 152.0962
+Epoch 2000: Loss = 124.1316
+Epoch 3000: Loss = 100.6394
+Epoch 4000: Loss = 80.9896
+Epoch 5000: Loss = 65.2225
+Epoch 6000: Loss = 53.9478
+Epoch 7000: Loss = 47.5429
+Epoch 8000: Loss = 44.7853
+Epoch 9000: Loss = 43.5539
+Deep Learning Model: RMSE=42.17, R^2=0.60, wd=1.0, lr=0.01, epochs=10000
+Epoch 0: Loss = 186.1659
+Epoch 10: Loss = 182.4083
+Epoch 20: Loss = 178.6963
+Epoch 30: Loss = 175.0481
+Epoch 40: Loss = 171.4752
+Epoch 50: Loss = 167.9831
+Epoch 60: Loss = 164.5733
+Epoch 70: Loss = 161.2451
+Epoch 80: Loss = 157.9964
+Epoch 90: Loss = 154.8249
+Deep Learning Model: RMSE=150.00, R^2=-4.10, wd=1.0, lr=0.1, epochs=100
+Epoch 0: Loss = 185.8555
+Epoch 100: Loss = 151.4305
+Epoch 200: Loss = 124.1522
+Epoch 300: Loss = 102.4630
+Epoch 400: Loss = 85.3859
+Epoch 500: Loss = 72.3010
+Epoch 600: Loss = 62.6680
+Epoch 700: Loss = 55.8898
+Epoch 800: Loss = 51.3227
+Epoch 900: Loss = 48.3541
+Deep Learning Model: RMSE=45.69, R^2=0.53, wd=1.0, lr=0.1, epochs=1000
+Epoch 0: Loss = 186.1899
+Epoch 1000: Loss = 46.5223
+Epoch 2000: Loss = 42.7641
+Epoch 3000: Loss = 42.3778
+Early stopping at epoch 3769: Loss = 42.3538
+Deep Learning Model: RMSE=41.68, R^2=0.61, wd=1.0, lr=0.1, epochs=10000
+Epoch 0: Loss = 185.4197
+Epoch 10: Loss = 149.5517
+Epoch 20: Loss = 118.9020
+Epoch 30: Loss = 94.0283
+Epoch 40: Loss = 74.8392
+Epoch 50: Loss = 61.3564
+Epoch 60: Loss = 52.6829
+Epoch 70: Loss = 47.5455
+Epoch 80: Loss = 44.7970
+Epoch 90: Loss = 43.6292
+Deep Learning Model: RMSE=42.60, R^2=0.59, wd=1.0, lr=1.0, epochs=100
+Epoch 0: Loss = 186.0834
+Epoch 100: Loss = 43.3851
+Early stopping at epoch 120: Loss = 43.6695
+Deep Learning Model: RMSE=42.93, R^2=0.58, wd=1.0, lr=1.0, epochs=1000
+Epoch 0: Loss = 186.1658
+Early stopping at epoch 120: Loss = 43.6570
+Deep Learning Model: RMSE=42.92, R^2=0.58, wd=1.0, lr=1.0, epochs=10000
+Epoch 0: Loss = 185.9909
+Epoch 10: Loss = 185.6135
+Epoch 20: Loss = 185.2370
+Epoch 30: Loss = 184.8621
+Epoch 40: Loss = 184.4891
+Epoch 50: Loss = 184.1181
+Epoch 60: Loss = 183.7494
+Epoch 70: Loss = 183.3829
+Epoch 80: Loss = 183.0185
+Epoch 90: Loss = 182.6564
+Deep Learning Model: RMSE=180.05, R^2=-6.35, wd=10.0, lr=0.01, epochs=100
+Epoch 0: Loss = 186.0082
+Epoch 100: Loss = 182.3138
+Epoch 200: Loss = 178.8357
+Epoch 300: Loss = 175.5706
+Epoch 400: Loss = 172.5013
+Epoch 500: Loss = 169.6101
+Epoch 600: Loss = 166.8830
+Epoch 700: Loss = 164.3086
+Epoch 800: Loss = 161.8779
+Epoch 900: Loss = 159.5827
+Deep Learning Model: RMSE=155.53, R^2=-4.48, wd=10.0, lr=0.01, epochs=1000
+Epoch 0: Loss = 185.7610
+Epoch 1000: Loss = 157.2384
+Epoch 2000: Loss = 141.3021
+Epoch 3000: Loss = 133.1030
+Epoch 4000: Loss = 129.9295
+Epoch 5000: Loss = 129.2152
+Epoch 6000: Loss = 129.1516
+Early stopping at epoch 6234: Loss = 129.1507
+Deep Learning Model: RMSE=127.23, R^2=-2.67, wd=10.0, lr=0.01, epochs=10000
+Epoch 0: Loss = 186.3175
+Epoch 10: Loss = 182.5771
+Epoch 20: Loss = 178.9542
+Epoch 30: Loss = 175.5237
+Epoch 40: Loss = 172.3047
+Epoch 50: Loss = 169.2887
+Epoch 60: Loss = 166.4699
+Epoch 70: Loss = 163.8405
+Epoch 80: Loss = 161.3851
+Epoch 90: Loss = 159.0892
+Deep Learning Model: RMSE=155.09, R^2=-4.45, wd=10.0, lr=0.1, epochs=100
+Epoch 0: Loss = 186.3328
+Epoch 100: Loss = 156.9409
+Epoch 200: Loss = 141.8095
+Epoch 300: Loss = 134.3586
+Epoch 400: Loss = 131.0748
+Epoch 500: Loss = 129.7926
+Epoch 600: Loss = 129.3432
+Epoch 700: Loss = 129.2020
+Epoch 800: Loss = 129.1626
+Epoch 900: Loss = 129.1529
+Deep Learning Model: RMSE=127.24, R^2=-2.67, wd=10.0, lr=0.1, epochs=1000
+Epoch 0: Loss = 185.9949
+Epoch 1000: Loss = 129.1508
+Early stopping at epoch 1106: Loss = 129.1504
+Deep Learning Model: RMSE=127.23, R^2=-2.67, wd=10.0, lr=0.1, epochs=10000
+Epoch 0: Loss = 185.6628
+Epoch 10: Loss = 152.6153
+Epoch 20: Loss = 133.4117
+Epoch 30: Loss = 126.1307
+Epoch 40: Loss = 125.2058
+Epoch 50: Loss = 127.5471
+Early stopping at epoch 57: Loss = 129.1112
+Deep Learning Model: RMSE=127.36, R^2=-2.68, wd=10.0, lr=1.0, epochs=100
+Epoch 0: Loss = 186.2146
+Early stopping at epoch 57: Loss = 128.9642
+Deep Learning Model: RMSE=127.23, R^2=-2.67, wd=10.0, lr=1.0, epochs=1000
+Epoch 0: Loss = 186.2438
+Early stopping at epoch 56: Loss = 128.8818
+Deep Learning Model: RMSE=127.15, R^2=-2.66, wd=10.0, lr=1.0, epochs=10000
+Epoch 0: Loss = 185.8148
+Epoch 10: Loss = 185.4386
+Epoch 20: Loss = 185.0717
+Epoch 30: Loss = 184.7185
+Epoch 40: Loss = 184.3796
+Epoch 50: Loss = 184.0565
+Epoch 60: Loss = 183.7499
+Epoch 70: Loss = 183.4585
+Epoch 80: Loss = 183.1818
+Epoch 90: Loss = 182.9198
+Deep Learning Model: RMSE=180.41, R^2=-6.38, wd=100.0, lr=0.01, epochs=100
+Epoch 0: Loss = 186.0271
+Epoch 100: Loss = 182.8645
+Epoch 200: Loss = 180.8532
+Epoch 300: Loss = 179.5974
+Epoch 400: Loss = 178.8251
+Epoch 500: Loss = 178.3849
+Epoch 600: Loss = 178.1557
+Epoch 700: Loss = 178.0462
+Epoch 800: Loss = 177.9980
+Epoch 900: Loss = 177.9785
+Deep Learning Model: RMSE=175.70, R^2=-6.00, wd=100.0, lr=0.01, epochs=1000
+Epoch 0: Loss = 185.9896
+Epoch 1000: Loss = 177.9720
+Early stopping at epoch 1336: Loss = 177.9678
+Deep Learning Model: RMSE=175.70, R^2=-6.00, wd=100.0, lr=0.01, epochs=10000
+Epoch 0: Loss = 185.9727
+Epoch 10: Loss = 182.4802
+Epoch 20: Loss = 180.0195
+Epoch 30: Loss = 178.5960
+Epoch 40: Loss = 177.8792
+Epoch 50: Loss = 177.5838
+Epoch 60: Loss = 177.6578
+Epoch 70: Loss = 177.8627
+Early stopping at epoch 72: Loss = 177.8987
+Deep Learning Model: RMSE=175.65, R^2=-5.99, wd=100.0, lr=0.1, epochs=100
+Epoch 0: Loss = 185.9202
+Early stopping at epoch 74: Loss = 177.9200
+Deep Learning Model: RMSE=175.66, R^2=-5.99, wd=100.0, lr=0.1, epochs=1000
+Epoch 0: Loss = 186.0965
+Early stopping at epoch 74: Loss = 177.8999
+Deep Learning Model: RMSE=175.64, R^2=-5.99, wd=100.0, lr=0.1, epochs=10000
+Epoch 0: Loss = 186.0206
+Epoch 10: Loss = 176.1879
+Epoch 20: Loss = 178.9645
+Early stopping at epoch 27: Loss = 177.1341
+Deep Learning Model: RMSE=174.97, R^2=-5.94, wd=100.0, lr=1.0, epochs=100
+Epoch 0: Loss = 186.0103
+Early stopping at epoch 27: Loss = 177.0122
+Deep Learning Model: RMSE=174.90, R^2=-5.93, wd=100.0, lr=1.0, epochs=1000
+Epoch 0: Loss = 185.4346
+Early stopping at epoch 26: Loss = 177.0018
+Deep Learning Model: RMSE=174.90, R^2=-5.93, wd=100.0, lr=1.0, epochs=10000

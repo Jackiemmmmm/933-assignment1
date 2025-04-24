@@ -1,0 +1,36 @@
+Bike Rental Model Comparison - Run at 2025-04-24 22:31:17
+--------------------------------------------------------------------------------
+Linear Regression: RMSE=15.15, R^2=0.95
+
+Best Ridge Regression alpha (λ): 0.31
+
+Ridge Regression: RMSE=15.15, R^2=0.95
+Lasso Regression: RMSE=15.11, R^2=0.95
+Elastic Net: RMSE=15.13, R^2=0.95
+
+best alpha: 0.03, best l1_ratio: 1.0
+
+                 Linear      Ridge         Lasso    ElasticNet
+temp          52.257972  52.161414  5.164590e+01  5.171376e+01
+humidity     -11.062912 -11.061955 -1.096194e+01 -1.103187e+01
+windspeed     -8.503579  -8.503162 -8.399527e+00 -8.472653e+00
+hour          -0.721079  -0.726547 -6.740301e-01 -7.132092e-01
+sin_hour      34.634309  34.627828  3.457697e+01  3.461397e+01
+cos_hour       0.061133   0.060521  0.000000e+00  3.215307e-02
+temp_squared  -0.526382  -0.431735  0.000000e+00  0.000000e+00
+workingday_0 -20.109517 -20.106189 -3.976540e+01 -4.008449e+01
+workingday_1  20.109517  20.106189  9.592164e-14  7.660125e-14
+holiday_0     10.794015  10.788591  2.043628e+01  2.123772e+01
+holiday_1    -10.794015 -10.788591 -1.451032e-13 -1.303378e-13
+
+Epoch 0: Loss = 186.0013
+Epoch 100: Loss = 20.7531
+Epoch 200: Loss = 16.2401
+Epoch 300: Loss = 15.8129
+Epoch 400: Loss = 15.6605
+Epoch 500: Loss = 15.5681
+Epoch 600: Loss = 15.5138
+Epoch 700: Loss = 15.4833
+Epoch 800: Loss = 15.4666
+Epoch 900: Loss = 15.4577
+Deep Learning Model: RMSE=15.23, R^2=0.95

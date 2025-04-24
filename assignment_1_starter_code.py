@@ -84,11 +84,11 @@ lin_reg.fit(X_train_processed, y_train)
 param_grid = {"alpha": [0.31, 0.32, 0.33, 0.34, 0.35]}
 ridge_cv = GridSearchCV(Ridge(), param_grid, cv=5, scoring="neg_mean_squared_error")
 ridge_cv.fit(X_train_processed, y_train)
-best_alpha = ridge_cv.best_params_["alpha"]
+best_ridge_alpha = ridge_cv.best_params_["alpha"]
 
 
 # Ridge Regression
-ridge = Ridge(alpha=0.31)
+ridge = Ridge(alpha=best_ridge_alpha)
 ridge.fit(X_train_processed, y_train)
 
 # Lasso Regression
@@ -124,7 +124,7 @@ elastic_net_cv = GridSearchCV(
 )
 elastic_net_cv.fit(X_train_processed, y_train)
 
-# Evaluate the best model
+# Evaluate the best modelx
 best_alpha = elastic_net_cv.best_params_["alpha"]
 best_l1_ratio = elastic_net_cv.best_params_["l1_ratio"]
 
@@ -132,6 +132,7 @@ best_l1_ratio = elastic_net_cv.best_params_["l1_ratio"]
 # Train the best Elastic Net model
 elastic_net = ElasticNet(alpha=best_alpha, l1_ratio=best_l1_ratio)
 elastic_net.fit(X_train_processed, y_train)
+
 
 # Evaluate models
 def evaluate(model, X, y, name):
@@ -143,7 +144,7 @@ def evaluate(model, X, y, name):
 
 evaluate(lin_reg, X_test_processed, y_test, "Linear Regression")
 print("")
-print(f"Best Ridge Regression alpha (λ): {best_alpha}")
+print(f"Best Ridge Regression alpha (λ): {best_ridge_alpha}")
 print("")
 evaluate(ridge, X_test_processed, y_test, "Ridge Regression")
 evaluate(lasso, X_test_processed, y_test, "Lasso Regression")
@@ -153,28 +154,34 @@ feature_names = numerical_features + [
 ]
 evaluate(elastic_net, X_test_processed, y_test, "Elastic Net")
 
-print('')
+print("")
 print(f"best alpha: {best_alpha}, best l1_ratio: {best_l1_ratio}")
-print('')
+print("")
 
 # Evaluate the best Elastic Net model
 coef_comparison = pd.DataFrame(
-    {"Linear": lin_reg.coef_,"Ridge": ridge.coef_, "Lasso": lasso.coef_, "ElasticNet": elastic_net.coef_},
+    {
+        "Linear": lin_reg.coef_,
+        "Ridge": ridge.coef_,
+        "Lasso": lasso.coef_,
+        "ElasticNet": elastic_net.coef_,
+    },
     index=feature_names,
 )
 
 print(coef_comparison)
-print('')
-
+print("")
 
 
 # --- Deep Learning Approach ---
 class LinearNN(nn.Module):
-    def __init__(self, input_dim):
+    def __init__(self, input_dim, dropout_rate=0.0):
         super(LinearNN, self).__init__()
+        self.dropout = nn.Dropout(dropout_rate)  # Dropout layer
         self.linear = nn.Linear(input_dim, 1)  # Single-layer linear model
 
     def forward(self, x):
+        x = self.dropout(x)  # Apply dropout
         return self.linear(x)
 
 
@@ -185,14 +192,34 @@ X_test_tensor = torch.tensor(X_test_processed, dtype=torch.float32)
 y_test_tensor = torch.tensor(y_test.values, dtype=torch.float32).view(-1, 1)
 
 # Initialize model, loss, and optimizer
+
+# Dropout Test Code
+# dropout_rates = [0, 0.1, 0.2, 0.3, 0.5]
+# for dr in dropout_rates:
+#     model = LinearNN(X_train_processed.shape[1], dropout_rate=dr)
+#     criterion = nn.MSELoss()
+#     optimizer = optim.Adam(model.parameters(), lr=1, weight_decay=0.01)
+#     epochs = 1000
+#     for epoch in range(epochs):
+#         model.train()
+#         optimizer.zero_grad()
+#         y_pred = model(X_train_tensor)
+#         loss = criterion(y_pred, y_train_tensor)
+#         loss.backward()
+#         optimizer.step()
+#         if epoch % 100 == 0:
+#             print(f"Epoch {epoch}: Loss = {np.sqrt(loss.item()):.4f}")
+#         # Evaluate on test data
+#     model.eval()
+#     y_pred_tensor = model(X_test_tensor).detach().numpy()
+#     test_rmse = root_mean_squared_error(y_test, y_pred_tensor)
+#     test_r2 = r2_score(y_test, y_pred_tensor)
+#     print(f"Deep Learning Model: RMSE={test_rmse:.2f}, R^2={test_r2:.2f}, dropout_rate={dr}")
+
 model = LinearNN(X_train_processed.shape[1])
 criterion = nn.MSELoss()
-optimizer = optim.Adam(
-    model.parameters(), lr=0.01, weight_decay=0.01
-)  # L2 regularization (weight decay)
-
-# Train model
-epochs = 100
+optimizer = optim.Adam(model.parameters(), lr=1, weight_decay=0.01)
+epochs = 1000
 for epoch in range(epochs):
     model.train()
     optimizer.zero_grad()
@@ -200,13 +227,65 @@ for epoch in range(epochs):
     loss = criterion(y_pred, y_train_tensor)
     loss.backward()
     optimizer.step()
-
-    if epoch % 10 == 0:
+    if epoch % 100 == 0:
         print(f"Epoch {epoch}: Loss = {np.sqrt(loss.item()):.4f}")
-
-# Evaluate on test data
+    # Evaluate on test data
 model.eval()
 y_pred_tensor = model(X_test_tensor).detach().numpy()
 test_rmse = root_mean_squared_error(y_test, y_pred_tensor)
 test_r2 = r2_score(y_test, y_pred_tensor)
 print(f"Deep Learning Model: RMSE={test_rmse:.2f}, R^2={test_r2:.2f}")
+
+# Weight Decay Test Code
+# weight_decay_values = [0.01, 0.1, 1.0, 10.0, 100.0]
+# for wd in weight_decay_values:
+
+#     learn_rate_values = [0.01, 0.1, 1.0]
+#     for lr in learn_rate_values:
+#         epochs_values = [100, 1000, 10000]
+#         for ev in epochs_values:
+#             model = LinearNN(X_train_processed.shape[1])
+#             criterion = nn.MSELoss()
+#             optimizer = optim.Adam(
+#                 model.parameters(), lr=lr, weight_decay=wd
+#             )  # L2 regularization (weight decay)
+#             # Train model
+#             epochs = ev
+#             # for epoch in range(epochs):
+#             #     model.train()
+#             #     optimizer.zero_grad()
+#             #     y_pred = model(X_train_tensor)
+#             #     loss = criterion(y_pred, y_train_tensor)
+#             #     loss.backward()
+#             #     optimizer.step()
+
+#             #     if epoch % (ev / 10) == 0:
+#             #         print(f"Epoch {epoch}: Loss = {np.sqrt(loss.item()):.4f}")
+
+#             best_loss = float("inf")
+#             patience, trigger_times = 20, 0
+
+#             for epoch in range(epochs):
+#                 model.train()
+#                 optimizer.zero_grad()
+#                 y_pred = model(X_train_tensor)
+#                 loss = criterion(y_pred, y_train_tensor)
+#                 loss.backward()
+#                 optimizer.step()
+#                 if loss.item() < best_loss - 0.01:
+#                     best_loss = loss.item()
+#                     trigger_times = 0
+#                 else:
+#                     trigger_times += 1
+#                     if trigger_times >= patience:
+#                         print(f"Early stopping at epoch {epoch}: Loss = {np.sqrt(loss.item()):.4f}")
+#                         break
+#                 if epoch % (ev / 10) == 0:
+#                     print(f"Epoch {epoch}: Loss = {np.sqrt(loss.item()):.4f}")
+
+#             # Evaluate on test data
+#             model.eval()
+#             y_pred_tensor = model(X_test_tensor).detach().numpy()
+#             test_rmse = root_mean_squared_error(y_test, y_pred_tensor)
+#             test_r2 = r2_score(y_test, y_pred_tensor)
+#             print(f"Deep Learning Model: RMSE={test_rmse:.2f}, R^2={test_r2:.2f}, wd={wd}, lr={lr}, epochs={epochs}")
