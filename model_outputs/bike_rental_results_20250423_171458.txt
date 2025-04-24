@@ -1,0 +1,17 @@
+Bike Rental Model Comparison - Run at 2025-04-23 17:14:58
+--------------------------------------------------------------------------------
+Linear Regression: RMSE=15.15, R^2=0.95
+Ridge Regression: RMSE=15.15, R^2=0.95
+Lasso Regression: RMSE=15.11, R^2=0.95
+Elastic Net: RMSE=15.74, R^2=0.94
+Epoch 0: Loss = 186.0147
+Epoch 10: Loss = 185.6378
+Epoch 20: Loss = 185.2613
+Epoch 30: Loss = 184.8854
+Epoch 40: Loss = 184.5101
+Epoch 50: Loss = 184.1356
+Epoch 60: Loss = 183.7617
+Epoch 70: Loss = 183.3885
+Epoch 80: Loss = 183.0160
+Epoch 90: Loss = 182.6443
+Deep Learning Model: RMSE=179.99, R^2=-6.34
