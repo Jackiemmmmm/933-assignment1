@@ -10,6 +10,8 @@ from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from log import log_output
+from sklearn.model_selection import GridSearchCV
+import matplotlib.pyplot as plt
 
 
 log_output()
@@ -73,18 +75,63 @@ X_test_processed = preprocessor.transform(X_test)
 lin_reg = LinearRegression()
 lin_reg.fit(X_train_processed, y_train)
 
+
+# first test alpha list - best 0.1
+# param_grid = {'alpha': [0.01, 0.1, 1.0, 10.0, 100.0]}
+# second test alpha list - best 0.3
+# param_grid = {"alpha": [0.1, 0.2, 0.3, 0.4, 0.5]}
+# third test alpha list - best 0.31
+param_grid = {"alpha": [0.31, 0.32, 0.33, 0.34, 0.35]}
+ridge_cv = GridSearchCV(Ridge(), param_grid, cv=5, scoring="neg_mean_squared_error")
+ridge_cv.fit(X_train_processed, y_train)
+best_alpha = ridge_cv.best_params_["alpha"]
+
+
 # Ridge Regression
-ridge = Ridge(alpha=1.0)
+ridge = Ridge(alpha=0.31)
 ridge.fit(X_train_processed, y_train)
 
 # Lasso Regression
 lasso = Lasso(alpha=0.1)
 lasso.fit(X_train_processed, y_train)
 
-# Elastic Net
-elastic_net = ElasticNet(alpha=0.1, l1_ratio=0.5)
-elastic_net.fit(X_train_processed, y_train)
 
+# Elastic Net
+# elastic_net = ElasticNet(alpha=0.1, l1_ratio=0.5)
+# elastic_net.fit(X_train_processed, y_train)
+
+
+# use GridSearchCV to find the best alpha and l1_ratio
+# first test alpha list - best alpha 0.001, l1_ratio 0.9
+# param_grid = {
+#     "alpha": [0.001, 0.005, 0.01, 0.015, 0.02],
+#     "l1_ratio": [0.1, 0.3, 0.5, 0.7, 0.9],
+# }
+# second test alpha list - best alpha 0.03, l1_ratio 0.96
+# param_grid = {
+#     "alpha": [0.02, 0.03, 0.04, 0.05, 0.06],
+#     "l1_ratio": [0.92, 0.93, 0.94, 0.95, 0.96],
+# }
+# third test alpha list - best alpha 0.03, l1_ratio 1.0
+param_grid = {
+    "alpha": [0.029, 0.03, 0.031, 0.032, 0.033],
+    "l1_ratio": [0.96, 0.97, 0.98, 0.99, 1.0],
+}
+
+
+elastic_net_cv = GridSearchCV(
+    ElasticNet(max_iter=10000), param_grid, cv=5, scoring="neg_mean_squared_error"
+)
+elastic_net_cv.fit(X_train_processed, y_train)
+
+# Evaluate the best model
+best_alpha = elastic_net_cv.best_params_["alpha"]
+best_l1_ratio = elastic_net_cv.best_params_["l1_ratio"]
+
+
+# Train the best Elastic Net model
+elastic_net = ElasticNet(alpha=best_alpha, l1_ratio=best_l1_ratio)
+elastic_net.fit(X_train_processed, y_train)
 
 # Evaluate models
 def evaluate(model, X, y, name):
@@ -95,9 +142,30 @@ def evaluate(model, X, y, name):
 
 
 evaluate(lin_reg, X_test_processed, y_test, "Linear Regression")
+print("")
+print(f"Best Ridge Regression alpha (λ): {best_alpha}")
+print("")
 evaluate(ridge, X_test_processed, y_test, "Ridge Regression")
 evaluate(lasso, X_test_processed, y_test, "Lasso Regression")
+
+feature_names = numerical_features + [
+    f"{cat}_{val}" for cat in categorical_features for val in [0, 1]
+]
 evaluate(elastic_net, X_test_processed, y_test, "Elastic Net")
+
+print('')
+print(f"best alpha: {best_alpha}, best l1_ratio: {best_l1_ratio}")
+print('')
+
+# Evaluate the best Elastic Net model
+coef_comparison = pd.DataFrame(
+    {"Linear": lin_reg.coef_,"Ridge": ridge.coef_, "Lasso": lasso.coef_, "ElasticNet": elastic_net.coef_},
+    index=feature_names,
+)
+
+print(coef_comparison)
+print('')
+
 
 
 # --- Deep Learning Approach ---
