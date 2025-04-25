@@ -1,5 +1,7 @@
 # Assignment 1 Methodology
 
+The README translation is from ClaudeAI
+
 ## Step 1: Run the code, fix any errors, and get initial results
 
 Results from running the code
